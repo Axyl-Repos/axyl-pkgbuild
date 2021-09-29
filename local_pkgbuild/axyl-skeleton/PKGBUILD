@@ -1,0 +1,26 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+
+pkgname=axyl-skeleton
+_pkgname=axyl-skeleton
+_destname1="/etc/skel/"
+pkgver=r1.57f9a0e
+pkgrel=1
+pkgdesc="Axyl OS skel files"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-skeleton"
+license=('MIT')
+provides=(${pkgname})
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+$url.git")
+md5sums=('SKIP')
+
+package() {
+    install -dm755 ${pkgdir}${_destname1}
+    cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
+    rm -rf ${pkgdir}${_destname1}/"skel"
+}
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
