@@ -1,0 +1,26 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+# Developer : siduck76 <https://github.com/siduck76>
+
+pkgname=axyl-nvim
+pkgver=1.0
+pkgrel=1
+pkgdesc="NvChad : the ultimate neovim configuration"
+arch=('any')
+url='https://github.com/NvChad/NvChad'
+license=('GPL')
+depends=('neovim')
+makedepends=('git')
+optdepends=()
+
+source=('nvim-config.tar.gz' 'nvim-plugins.tar.gz')
+
+sha256sums=('59023648351101f048c7da4ca707175774206ee833ae6dbad14c4c6de74aa02e'
+            '46b995aff1f4b59e822059569f433e94757d81359551bdc910023abbfc2e94b2')
+
+package() {
+	mkdir -p ${pkgdir}/etc/skel/.config
+	mkdir -p ${pkgdir}/etc/skel/.local/share/nvim
+
+	cp -rf ${srcdir}/nvim ${pkgdir}/etc/skel/.config/nvim
+	cp -rf ${srcdir}/nvim-plugins/* ${pkgdir}/etc/skel/.local/share/nvim
+}
