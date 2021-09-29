@@ -1,0 +1,27 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+
+pkgname=axyl-fonts
+_pkgname=axyl-fonts
+_destname1="/etc/skel/"
+pkgver=r4.e2cfed3
+pkgrel=1
+pkgdesc="Fonts for Axyl OS"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-fonts"
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+md5sums=('SKIP')
+
+package() {
+    install -dm755 ${pkgdir}${_destname1}
+    cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
+    rm -rf ${pkgdir}${_destname1}/"skel"
+}
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
