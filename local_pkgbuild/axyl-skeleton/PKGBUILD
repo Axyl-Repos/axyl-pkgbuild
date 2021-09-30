@@ -3,7 +3,7 @@
 pkgname=axyl-skeleton
 _pkgname=axyl-skeleton
 _destname1="/etc/skel/"
-pkgver=r6.6262444
+pkgver=r7.b3ea24f
 pkgrel=1
 pkgdesc="Axyl OS skel files"
 arch=('x86_64')
