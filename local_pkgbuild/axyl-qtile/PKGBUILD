@@ -2,7 +2,7 @@
 pkgname=axyl-qtile
 _pkgname=axyl-qtile
 _destname1="/etc/skel/"
-pkgver=r14.3ed8d0e
+pkgver=r15.dcd5bda
 pkgrel=1
 pkgdesc="Qtile Configurations for Axyl OS"
 arch=('x86_64')
