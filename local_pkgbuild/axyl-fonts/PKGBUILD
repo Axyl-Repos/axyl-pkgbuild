@@ -3,7 +3,7 @@
 pkgname=axyl-fonts
 _pkgname=axyl-fonts
 _destname1="/etc/skel/"
-pkgver=r5.4d39bd0
+pkgver=r6.e21bebf
 pkgrel=1
 pkgdesc="Fonts for Axyl OS"
 arch=('x86_64')
