@@ -3,7 +3,7 @@
 pkgname=axyl-scripts
 _pkgname=axyl-scripts
 _destname1="/usr/local/bin/"
-pkgver=r5.cb50941
+pkgver=r6.9beafaa
 pkgrel=1
 pkgdesc="System Scipts for Axyl OS"
 arch=('any')
