@@ -1,0 +1,24 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux.com>
+
+pkgname=axyl-scripts
+pkgver=r1.beb5313
+pkgrel=1
+pkgdesc="System Scipts for Axyl OS"
+arch=('any')
+url="https://github.com/axyl-os/axyl-scripts"
+license=('MIT')
+makedepends=(git)
+provides=(${pkgname})
+options=(!strip !emptydirs)
+source=("git+$url.git")
+md5sums=('SKIP')
+
+package() {
+    cd "$pkgname"
+    (find files -type f -exec install Dm 755 "{}" "$pkgdir/usr/local/bin/{}" \;)
+}
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
