@@ -1,7 +1,9 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux.com>
 
 pkgname=axyl-scripts
-pkgver=r4.6979d83
+_pkgname=axyl-scripts
+_destname1="/usr/local/bin/"
+pkgver=r5.cb50941
 pkgrel=1
 pkgdesc="System Scipts for Axyl OS"
 arch=('any')
@@ -11,16 +13,12 @@ makedepends=(git)
 depends=(light xorg-xbacklight)
 provides=(${pkgname})
 options=(!strip !emptydirs)
-source=(${pkgname}::"git+$url.git")
+source=(${_pkgname}::"git+$url.git")
 md5sums=('SKIP')
 
-prepare() {
-    cd "$pkgname"
-    cp -af ./files/. ${srcdir}
-}
-
 package() {
-    (find bin -type f -exec install Dm 755 "{}" "$pkgdir/usr/local/{}" \;)
+    install -dm755 ${pkgdir}${_destname1}
+    cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
 }
 
 pkgver() {
