@@ -3,7 +3,7 @@
 pkgname=axyl-scripts
 _pkgname=axyl-scripts
 _destname1="/usr/local/bin/"
-pkgver=r6.9beafaa
+pkgver=1.0
 pkgrel=1
 pkgdesc="System Scipts for Axyl OS"
 arch=('any')
@@ -20,9 +20,4 @@ package() {
     install -dm755 ${pkgdir}${_destname1}
     cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
     rm -rf ${pkgdir}${_destname1}/"bin"
-}
-
-pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

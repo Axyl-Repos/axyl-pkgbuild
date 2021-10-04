@@ -3,7 +3,7 @@
 pkgname=axyl-skeleton
 _pkgname=axyl-skeleton
 _destname1="/etc/skel/"
-pkgver=r10.757ec64
+pkgver=1.0
 pkgrel=1
 pkgdesc="Axyl OS skel files"
 arch=('x86_64')
@@ -18,9 +18,4 @@ package() {
     install -dm755 ${pkgdir}${_destname1}
     cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
     rm -rf ${pkgdir}${_destname1}/"skel"
-}
-
-pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
