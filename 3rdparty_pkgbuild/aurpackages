@@ -1,5 +1,6 @@
 mkinitcpio-openswap
 ckbcomp
+devour
 yay-bin
 cava
 xfce-polkit
@@ -11,4 +12,3 @@ tty-clock
 networkmanager-dmenu-git
 plymouth
 shell-color-scripts
-picom-jonaburg-git
