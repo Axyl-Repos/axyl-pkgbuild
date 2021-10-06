@@ -2,15 +2,15 @@
 echo "################################################################"
 echo "################### Making the package"
 echo "################################################################"
-filename=$(echo $(pwd| awk -v FS='/' '{print $NF}')"-"$(cat ./PKGBUILD | grep "pkgver="|awk -v FS='=' '{print $NF}')"-")
-ls ../../../xelph-repo/x86_64/ | grep $filename | xargs -I {} rm -rf ../../../xelph-repo/x86_64/{}
-updpkgsums
 makepkg -sc --noconfirm
 yes| yay -c
-mv *.pkg.tar.zst ../../../xelph-repo/x86_64/
+mkdir -p ../../x86_64
+mv *.pkg.tar.zst ../../x86_64
 echo "################################################################"
 echo "################### Moved the .zst file to x86_64 folder"
 echo "################################################################"
-sudo rm -rf pkg
-sudo rm -rf src
-find . -type f  | grep -i "calamares-.*$"  | xargs rm -rf
+find . -type d -not -path "." -exec sudo rm -r "{}" \;
+find . -type f -not -name "build.sh" -not -name "*.install" -not -name PKGBUILD -not -name -not -name  "49-nopasswd-calamares.rules" -not -name "calamares_polkit" -not -name "calamares.desktop" -not -name "calamares-3.2.44.3" -not -name "*.pkg.tar.zst" -delete
+echo "################################################################"
+echo "################### Removed all redundant files and folders"
+echo "################################################################"
