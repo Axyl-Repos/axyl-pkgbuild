@@ -1,4 +1,4 @@
-# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Maintainer: Gabriel Matthews <axyl[dot]os[dot]linux[at]gmail[dot]org>
 
 pkgname=axyl-calamares
 _pkgname=calamares
@@ -25,7 +25,7 @@ source=("$_pkgname-$pkgver::$url/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
 	"49-nopasswd-calamares.rules")
 
 sha256sums=('a7772d50baf35cfb7d74db3c0a46fb72a74e069a78a8e984c2ed1d115abc944c'
-            'd6a5ce002c99586dfa0cb8621cad631f148dfd0d6d234c31643a63c585c546ee'
+            'aeedc261e49612222ef040d2caa24043fee480d980b581ab4fe9edcde7e1aae1'
             '4c8b48518b0047672e835e0a6c8a66342b316ab8835cf4c331030de4830dcea2'
             '56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176')
 
