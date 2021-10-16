@@ -1,6 +1,8 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux.com>
 
 pkgname=axyl-dwm
+_pkgname=axyl-dwm
+_destname1="/opt/axyl-dwm"
 pkgver=6.2
 pkgrel=1
 pkgdesc="dwm configuration for Axyl OS"
@@ -16,18 +18,12 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 build() {
-    cd "${pkgname}"
-    make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
+    cd "$pkgname"${_destname1}
+    make
 }
 
 package() {
-    cd "${pkgname}"
-
-    mkdir -p ${pkgdir}/opt/${pkgname}
-    mkdir -p ${pkgdir}/usr/share/xsessions/
-    mkdir -p ${pkgdir}/etc/skel/
-    mv dwm-configs/ ${pkgdir}/etc/skel/.dwm/
-    cp -rf * ${pkgdir}/opt/${pkgname}
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
-    install -Dm644 "${srcdir}/${pkgname}/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+  cd "$pkgname"
+  install -Dm644 "./dwm.desktop" "${pkgdir}/usr/share/xsessions/dwm.desktop"
+  cp -r ${srcdir}/${_pkgname}"/etc/" "${pkgdir}/etc"
 }
