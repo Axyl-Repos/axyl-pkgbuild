@@ -24,6 +24,8 @@ build() {
 
 package() {
   cd "$pkgname"
+
+  install -dm755 ${pkgdir}${_destname1}
   install -Dm644 "./dwm.desktop" "${pkgdir}/usr/share/xsessions/dwm.desktop"
   cp -r ${srcdir}/${_pkgname}"/etc/" "${pkgdir}/etc"
 }
