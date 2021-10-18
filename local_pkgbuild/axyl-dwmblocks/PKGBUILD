@@ -16,11 +16,11 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 build() {
-    cd "$pkgname"${_destname1}
-    make 
+  cd "$pkgname"${_destname1}
+  make
 }
 
 package() {
-    install -dm755 ${pkgdir}${_destname1}
-    cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+  install -dm755 ${pkgdir}${_destname1}
+  cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }

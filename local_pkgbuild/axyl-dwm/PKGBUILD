@@ -2,7 +2,8 @@
 
 pkgname=axyl-dwm
 _pkgname=axyl-dwm
-_destname1="/opt/axyl-dwm"
+_destname1="/opt/axyl-dwm/"
+_destname2="/etc/skel/"
 pkgver=6.2
 pkgrel=1
 pkgdesc="dwm configuration for Axyl OS"
@@ -16,16 +17,21 @@ provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=("git+$url.git")
 md5sums=('SKIP')
+install="$pkgname.install"
 
 build() {
-    cd "$pkgname"${_destname1}
-    make
+  cd "$pkgname"${_destname1}
+  make
 }
 
 package() {
-  cd "$pkgname"
+  install -dm755 ${pkgdir}${_destname1}
+  cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+  
+  install -dm755 ${pkgdir}${_destname2}
+  cp -r ${srcdir}/${_pkgname}"/dwm/" ${pkgdir}${_destname2}".dwm/"
 
-  install -Dm644 "./dwm.desktop" "${pkgdir}/usr/share/xsessions/dwm.desktop"
-  cp -r ${srcdir}/${_pkgname}"/opt/" "${pkgdir}/opt"
-  cp -r ${srcdir}/${_pkgname}"/etc/" "${pkgdir}/etc"
+  cd "$pkgname"${_destname1}
+  install -Dm755 "./dwm" "$pkgdir/usr/local/bin/dwm"
+  install -Dm644 "./dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
