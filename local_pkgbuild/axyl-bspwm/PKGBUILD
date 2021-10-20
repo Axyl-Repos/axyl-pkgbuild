@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 pkgname=axyl-bspwm
 _pkgname=axyl-bspwm
-_destname1="/etc/skel/.config/bspwm/"
+_destname1="/etc/skel/.config/"
 pkgver=1.0
 pkgrel=1
 pkgdesc="BSPWM Configurations for Axyl OS"
@@ -16,6 +16,6 @@ source=(${_pkgname}::"git+https://github.com/axyl-os/${_pkgname}.git")
 sha256sums=('SKIP')
 
 package() {
-	install -dm755 ${pkgdir}${_destname1}
-	cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+	install -dm755 ${pkgdir}${_destname1}"bspwm/"
+	cp -r ${srcdir}/${_pkgname}${_destname1}"bspwm/" ${pkgdir}${_destname1}
 }
