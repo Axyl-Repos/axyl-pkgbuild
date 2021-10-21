@@ -1,21 +1,21 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 pkgname=axyl-bspwm
 _pkgname=axyl-bspwm
-_destname1="/etc/skel/.config/"
+_destname1="/etc/skel/"
 pkgver=1.0
 pkgrel=1
 pkgdesc="BSPWM Configurations for Axyl OS"
 arch=('x86_64')
-url="https://github.com/axyl-os/"
+url="https://github.com/axyl-os/axyl-bspwm"
 license=('MIT')
-depends=('bspwm' 'sxhkd' 'axyl-fonts' 'polybar')
+depends=(bspwm sxhkd polybar)
 makedepends=('git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+https://github.com/axyl-os/${_pkgname}.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 package() {
-	install -dm755 ${pkgdir}${_destname1}"bspwm/"
-	cp -r ${srcdir}/${_pkgname}${_destname1}"bspwm/" ${pkgdir}${_destname1}
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}${_destname1} ${pkgdir}${_destname1}
 }
