@@ -1,0 +1,21 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+pkgname=axyl-xmonad
+_pkgname=axyl-xmonad
+_destname1="/etc/skel/"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Xmonad Configurations for Axyl OS"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-xmonad"
+license=('MIT')
+depends=(xmonad-contrib xmonad)
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}${_destname1}.xmonad/ ${pkgdir}${_destname1}
+}
