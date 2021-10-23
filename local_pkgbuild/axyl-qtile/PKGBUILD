@@ -1,24 +1,21 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 pkgname=axyl-qtile
 _pkgname=axyl-qtile
-_destname1="/etc/skel/"
+_destname1="/etc/skel/.config/"
 pkgver=1.0
 pkgrel=1
 pkgdesc="Qtile Configurations for Axyl OS"
 arch=('x86_64')
-url="https://github.com/axyl-os/"
+url="https://github.com/axyl-os/axyl-qtile"
 license=('MIT')
-depends=('python-pip' 'python-psutil' 'axyl-fonts' 'qtile' 'axyl-dmenu')
+depends=(python-pip python-psutil axyl-fonts qtile axyl-dmenu)
 makedepends=('git')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
-source=(${_pkgname}::"git+https://github.com/axyl-os/${_pkgname}.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
-install='post.install'
 
 package() {
 	install -dm755 ${pkgdir}${_destname1}
-	echo "NOTE: ONLY DOTFILES WILL BE ADDED."
-	cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
-	rm -rf ${pkgdir}${_destname1}/"skel"
+	cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
 }
