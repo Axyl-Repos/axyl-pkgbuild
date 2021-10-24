@@ -1,0 +1,22 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+
+pkgname=axyl-release
+_pkgname=axyl-release
+_destname1="/etc/"
+pkgver=v21.10
+pkgrel=1
+pkgdesc="Axyl lsb release"
+arch=('x86_64')
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+prepare() {
+        cp -af ../lsb-release ${srcdir}
+}
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	install -Dm644 ${srcdir}"/lsb-release" "$pkgdir/etc/lsb-release"
+}
