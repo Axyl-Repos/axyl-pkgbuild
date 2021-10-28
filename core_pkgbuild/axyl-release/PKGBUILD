@@ -1,22 +1,23 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 
 pkgname=axyl-release
-_pkgname=axyl-release
-_destname1="/etc/"
 pkgver=v21.10
 pkgrel=1
-pkgdesc="Axyl lsb release"
-arch=('x86_64')
+pkgdesc="Pacman hooks for Axyl to fix various system files."
+arch=('any')
 license=('MIT')
-makedepends=('git')
-provides=("${pkgname}")
-options=(!strip !emptydirs)
 
 prepare() {
-        cp -af ../lsb-release ${srcdir}
+    cp -af ../files/* ${srcdir}
 }
 
 package() {
-	install -dm755 ${pkgdir}${_destname1}
-	install -Dm644 ${srcdir}"/lsb-release" "$pkgdir/etc/lsb-release"
+    local hooks=${pkgdir}/usr/share/libalpm/hooks
+    local bin=${pkgdir}/usr/bin
+
+    install -Dm644 ${srcdir}/axyl-hooks.hook              ${hooks}/axyl-hooks.hook
+    install -Dm644 ${srcdir}/axyl-lsb-release.hook        ${hooks}/axyl-lsb-release.hook
+    install -Dm644 ${srcdir}/axyl-os-release.hook         ${hooks}/axyl-os-release.hook
+
+    install -Dm755 ${srcdir}/axyl-hooks-runner            ${bin}/axyl-hooks-runner
 }

@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = axyl-hooks
+
+[Action]
+Description = Updating Axyl System Configurations...
+When = PostTransaction
+Exec = /usr/bin/axyl-hooks-runner
