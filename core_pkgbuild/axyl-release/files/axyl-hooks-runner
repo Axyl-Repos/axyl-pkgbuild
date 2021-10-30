@@ -3,11 +3,14 @@
 fix_lsb_release() {
     local file=/etc/lsb-release
 
-    rm -rf ${file}
-    echo "LSB_VERSION=1.4" >> "$file"
-    echo "DISTRIB_ID=axyl" >> "$file"
-    echo "DISTRIB_RELEASE=rolling" >> "$file"
-    echo "DISTRIB_DESCRIPTION=\"Axyl\"" >> "$file"
+    if [[ -z "`grep "^DISTRIB_RELEASE=" $file`" ]] ; then
+        # add missing DISTRIB_RELEASE=
+        echo "DISTRIB_RELEASE=rolling" >> "$file"
+    fi
+    sed -i "$file" \
+        -e 's|^DISTRIB_ID=.*$|DISTRIB_ID=axyl|' \
+        -e 's|^DISTRIB_RELEASE=.*$|DISTRIB_RELEASE=rolling|' \
+        -e 's|^DISTRIB_DESCRIPTION=.*$|DISTRIB_DESCRIPTION=\"Axyl\"|'
 }
 
 fix_os_release() {
