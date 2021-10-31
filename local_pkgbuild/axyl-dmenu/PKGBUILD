@@ -9,7 +9,6 @@ url="https://github.com/axyl-os/axyl-dmenu"
 license=('MIT')
 depends=(sh glibc coreutils libx11 libxinerama libxft)
 makedepends=(git make)
-conflicts=(dmenu)
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=(${pkgname}::"git+https://github.com/axyl-os/${pkgname}.git")
