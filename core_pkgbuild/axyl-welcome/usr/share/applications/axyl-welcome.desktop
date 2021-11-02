@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Axyl Welcome
+Comment=Axyl Welcome Application
+Exec=axyl-welcome
+Icon=axyl-logo
+Type=Application
+Categories=System;
