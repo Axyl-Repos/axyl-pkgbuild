@@ -9,8 +9,7 @@ mv *.pkg.tar.zst ../../x86_64
 echo "################################################################"
 echo "################### Moved the .zst file to x86_64 folder"
 echo "################################################################"
-find . -type d -not -path "." -exec sudo rm -r "{}" \;
-find . -type f -not -name "build.sh" -not -name "*.install" -not -name PKGBUILD -not -name "*.pkg.tar.zst" -delete
+find . -type f -path "src/" -path "pkg/" -delete
 echo "################################################################"
 echo "################### Removed all redundant files and folders"
 echo "################################################################"
