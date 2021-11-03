@@ -1,0 +1,34 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+# Developer: Angelo Fallaria <ba.fallaria@gmail.com>
+
+pkgname=axyl-pomoff-git
+_pkgname=pomoff
+_destname1="/etc/skel/.config/"
+pkgver=r81.3ec6e56
+pkgrel=1
+pkgdesc="Pomodoro timer made in Python."
+arch=('any')
+url="https://github.com/angelofallars/pomoff"
+license=('MIT')
+provides=(${pkgname})
+depends=(python-colorama mpv)
+makedepends=(git)
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+$url.git")
+md5sums=('SKIP')
+install='post.install'
+
+prepare() {
+  cd "../$_pkgname"
+  cp -rf * ${srcdir}
+}
+
+package() {
+  install -dm755 ${pkgdir}${_destname1}
+  cp -r ${srcdir}/* ${pkgdir}${_destname1}
+}
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
