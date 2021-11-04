@@ -3,8 +3,8 @@
 
 pkgname=axyl-pomoff-git
 _pkgname=pomoff
-_destname1="/etc/skel/.config/"
-pkgver=r81.3ec6e56
+_destname1="/usr/share/$pkgname/"
+pkgver=r82.10662b8
 pkgrel=1
 pkgdesc="Pomodoro timer made in Python."
 arch=('any')

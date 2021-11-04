@@ -1,6 +1,6 @@
 post_install() {
     echo -e "\n** Creating Symlink for pomoff **\n"
-    ln -sf /etc/skel/.config/pomoff/main.py /usr/local/bin/pomoff
+    ln -sf /usr/share/axyl-pomoff-git/pomoff/main.py /usr/local/bin/pomoff
     chmod +x /usr/local/bin/pomoff
 }
 
