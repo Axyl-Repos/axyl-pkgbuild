@@ -1,0 +1,21 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+pkgname=axyl-spectrwm
+_pkgname=axyl-spectrwm
+_destname1="/etc/skel/.config/"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Spectrwm Configurations for Axyl OS"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-spectrwm"
+license=('MIT')
+depends=(spectrwm-git)
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
