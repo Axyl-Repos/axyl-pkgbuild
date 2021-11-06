@@ -17,6 +17,7 @@ provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=("git+$url.git")
 md5sums=('SKIP')
+install='post.install'
 
 build() {
   cd "$pkgname"${_destname1}

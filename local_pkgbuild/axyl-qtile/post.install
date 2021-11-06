@@ -1,5 +1,6 @@
 post_install() {
-    echo -e "\n** The qtile config files have been installed in /etc/skel/ **\n"
+    echo -e "\n** Please copy Qtile folder from /etc/skel/.config/qtile/ to ~/.config/qtile/ **\n"
+    echo -e "\n** Execute this command: cp -r /etc/skel/.config/qtile/ ~/.config/qtile/ **\n"
 }
 
 post_upgrade() {
