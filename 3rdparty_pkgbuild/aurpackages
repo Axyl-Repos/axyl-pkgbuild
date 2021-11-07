@@ -4,15 +4,14 @@ devour
 i3lock-color
 j4-dmenu-desktop
 ksuperkey
-minecraft-launcher
+leftwm
 mkinitcpio-openswap
 networkmanager-dmenu-git
 picom-jonaburg-git
 polybar
 shell-color-scripts
 spectrwm-git
-telegram-desktop-bin
 tty-clock
 unimatrix-git
 xfce-polkit
-yay-bin
+paru-bin
