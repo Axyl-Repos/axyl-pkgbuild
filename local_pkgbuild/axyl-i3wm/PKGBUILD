@@ -1,0 +1,22 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+pkgname=axyl-i3wm
+_pkgname=axyl-i3wm
+_destname1="/etc/skel/.config/"
+pkgver=1.0
+pkgrel=1
+pkgdesc="i3wm Configurations for Axyl OS"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-i3wm"
+license=('MIT')
+depends=(i3-gaps polybar)
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+install='post.install'
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
