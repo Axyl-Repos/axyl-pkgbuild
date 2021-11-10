@@ -10,6 +10,7 @@ arch=('x86_64')
 url="https://github.com/axyl-os/axyl-grub-theme"
 license=('MIT')
 depends=(grub)
+makedepends=(git)
 provides=(${pkgname})
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+$url.git")

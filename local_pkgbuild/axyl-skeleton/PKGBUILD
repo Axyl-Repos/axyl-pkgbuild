@@ -9,6 +9,7 @@ pkgdesc="Axyl OS skel files"
 arch=('x86_64')
 url="https://github.com/axyl-os/axyl-skeleton"
 license=('MIT')
+makedepends=(git)
 provides=(${pkgname})
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+$url.git")

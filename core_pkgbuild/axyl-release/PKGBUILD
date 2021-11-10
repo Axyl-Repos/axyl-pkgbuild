@@ -5,6 +5,7 @@ pkgver=v21.10
 pkgrel=1
 pkgdesc="Pacman hooks for Axyl to fix various system files."
 arch=('any')
+url="https://github.com/axyl-os/axyl-pkgbuild/core_pkgbuild/axyl-release"
 license=('MIT')
 
 prepare() {
