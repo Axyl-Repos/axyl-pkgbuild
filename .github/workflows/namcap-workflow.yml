@@ -1,0 +1,33 @@
+name: Check PKGBUILDs
+
+on: [push, pull_request]
+
+jobs:
+  namcap:
+
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install packages
+      run: |
+        pacman -Syu python python-pip git base-devel --noconfirm --needed
+
+    - name: Prepare namcap
+      run: |
+        git clone https://github.com/angelofallars/namcap.git
+
+        pip install --upgrade pip
+        pip install -r namcap/requirements.txt
+
+    - name: Install namcap
+      working-directory: namcap
+      run: python setup.py install
+
+    - name: Check PKGBUILDs with namcap
+      run: |
+        python namcap/traverse_directory_tree.py
