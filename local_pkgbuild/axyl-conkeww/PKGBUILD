@@ -1,0 +1,24 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+# Developer: Angelo Fallaria <ba.fallaria@gmail.com>
+
+pkgname=axyl-conkeww
+_pkgname=conkeww
+_destname1="/etc/skel/.config/"
+pkgver=1.0
+pkgrel=1
+pkgdesc="A UI framework like Conky built on eww"
+arch=('any')
+url="https://github.com/angelofallars/conkeww"
+license=('MIT')
+depends=(eww-git)
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+install='post.install'
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}${_pkgname}
+	cp -rf ${_pkgname}/* ${pkgdir}${_destname1}${_pkgname}
+}
