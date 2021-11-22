@@ -1,0 +1,21 @@
+# Maintainer: Gabriel Matthews <matthewriel63@gmail.com>
+pkgname=axyl-wallpapers
+_pkgname=axyl-wallpapers
+_destname1="/usr/share/backgrounds/${_pkgname}"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Axyl Wallpapers & Artworks"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-wallpapers"
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+install="post.install"
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}/artworks ${pkgdir}${_destname1}
+}
