@@ -2,7 +2,7 @@
 
 pkgname=axyl-calamares
 _pkgname=calamares
-pkgver=3.2.47
+pkgver=3.2.48
 pkgrel=1
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=("$_pkgname-$pkgver::$url/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
 	"calamares_polkit"
 	"49-nopasswd-calamares.rules")
 
-sha256sums=('44c6dc6ee9c803802100f7c988a4ccb6a43b8de6e0841a0cc3c1797df9ffe3c6'
+sha256sums=('5c668ad545f03bbc55cdd8224c47709022abb05c8e991b9b20908469eff5b937'
             'aeedc261e49612222ef040d2caa24043fee480d980b581ab4fe9edcde7e1aae1'
             '4c8b48518b0047672e835e0a6c8a66342b316ab8835cf4c331030de4830dcea2'
             '56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176')
