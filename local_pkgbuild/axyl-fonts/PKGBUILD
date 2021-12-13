@@ -1,0 +1,19 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+
+pkgname=axyl-fonts
+_pkgname=fonts
+_destname1="/usr/share/fonts/TTF"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Fonts for Axyl"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-pkgbuild/local_pkgbuild/axyl-fonts"
+license=('MIT')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+
+package() {
+    install -dm755 ${pkgdir}${_destname1}
+    
+    cp -r ../${_pkgname}/* ${pkgdir}${_destname1}
+}
