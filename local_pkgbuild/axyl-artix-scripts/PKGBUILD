@@ -1,0 +1,23 @@
+# Maintainer: John Tran <axyl.os.linux.com>
+
+pkgname=axyl-artix-scripts
+_pkgname=axyl-artix-scripts
+_destname1="/usr/local/bin/"
+pkgver=1.0
+pkgrel=1
+pkgdesc="System Scipts for Axyl OS Artix edition"
+arch=('any')
+url="https://github.com/axyl-os/axyl-artix-scripts"
+license=('MIT')
+makedepends=(git)
+depends=(light xorg-xbacklight pamixer)
+provides=(${pkgname})
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+$url.git")
+md5sums=('SKIP')
+
+package() {
+    install -dm755 ${pkgdir}${_destname1}
+    cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
+    rm -rf ${pkgdir}${_destname1}/"bin"
+}
