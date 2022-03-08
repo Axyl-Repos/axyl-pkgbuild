@@ -14,8 +14,8 @@ optdepends=()
 
 source=('nvim-config.tar.gz' 'nvim-plugins.tar.gz')
 
-sha256sums=('59023648351101f048c7da4ca707175774206ee833ae6dbad14c4c6de74aa02e'
-            '46b995aff1f4b59e822059569f433e94757d81359551bdc910023abbfc2e94b2')
+sha256sums=('31471bd228dc0d115476147917cb0130747b953c017c2136c32119ed90f77f90'
+            '71a25f3b2e489759bc1d7cf9cd09618d974416c3f53c5024439d2722dbc02a5a')
 
 package() {
 	mkdir -p ${pkgdir}/etc/skel/.config
