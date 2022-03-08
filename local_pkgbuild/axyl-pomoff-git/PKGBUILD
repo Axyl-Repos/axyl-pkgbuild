@@ -4,7 +4,7 @@
 pkgname=axyl-pomoff-git
 _pkgname=pomoff
 _destname1="/usr/share/$pkgname/"
-pkgver=r82.10662b8
+pkgver=r84.89833fd
 pkgrel=1
 pkgdesc="Pomodoro timer made in Python."
 arch=('any')
