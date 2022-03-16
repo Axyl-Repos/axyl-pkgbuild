@@ -10,6 +10,7 @@ leftwm
 mkinitcpio-openswap
 nerd-fonts-jetbrains-mono
 networkmanager-dmenu-git
+oh-my-zsh-git
 picom-jonaburg-git
 polybar
 qogir-gtk-theme-git
