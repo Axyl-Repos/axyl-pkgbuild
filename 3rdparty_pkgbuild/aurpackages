@@ -1,3 +1,4 @@
+ani-cli-git
 cava
 ckbcomp
 devour
@@ -11,13 +12,13 @@ mkinitcpio-openswap
 nerd-fonts-jetbrains-mono
 networkmanager-dmenu-git
 oh-my-zsh-git
+paru-bin
+phinger-cursors
 picom-jonaburg-git
 polybar
 qogir-gtk-theme-git
 shell-color-scripts
 spectrwm-git
-tty-clock
 unimatrix-git
 xfce-polkit
-paru-bin
-phinger-cursors
+ytfzf-git
