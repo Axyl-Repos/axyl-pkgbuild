@@ -1,9 +1,7 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux.com>
 
 pkgname=axyl-dwm
-_pkgname=axyl-dwm
-_destname1="/opt/axyl-dwm/"
-_destname2="/etc/skel/"
+_destname1="/etc/skel"
 pkgver=6.2
 pkgrel=1
 pkgdesc="dwm configuration for Axyl OS"
@@ -20,18 +18,16 @@ md5sums=('SKIP')
 install='post.install'
 
 build() {
-  cd "$pkgname"${_destname1}
+  cd ${pkgname}${_destname1}/.config/dwm
   make
 }
 
 package() {
-  install -dm755 ${pkgdir}${_destname1}
-  cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
-  
-  install -dm755 ${pkgdir}${_destname2}
-  cp -r ${srcdir}/${_pkgname}"/dwm/" ${pkgdir}${_destname2}".dwm/"
+  install -dm755 ${pkgdir}${_destname1}/.config/
+  cp -r ${srcdir}/${pkgname}${_destname1}/.config/* ${pkgdir}${_destname1}/.config/
+  cp -r ${srcdir}/${pkgname}${_destname1}/.dwm/ ${pkgdir}${_destname1}
 
-  cd "$pkgname"${_destname1}
-  install -Dm755 "./dwm" "$pkgdir/usr/local/bin/dwm"
-  install -Dm644 "./dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+  cd "$pkgname"${_destname1}/.config/dwm/
+  install -Dm755 "./dwm" ${pkgdir}/usr/bin/dwm
+  install -Dm644 "./dwm.desktop" ${pkgdir}/usr/share/xsessions/dwm.desktop
 }
