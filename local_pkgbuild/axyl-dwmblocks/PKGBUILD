@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux.com>
 
 pkgname=axyl-dwmblocks
-_pkgname=axyl-dwmblocks
-_destname1="/opt/axyl-dwmblocks/"
+_destname1="/etc/skel"
+_destname2="/usr/local/bin"
 pkgver=1.0
 pkgrel=1
 pkgdesc="dwmblocks configuration for axyl-dwm"
@@ -16,14 +16,16 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 build() {
-  cd "$pkgname"${_destname1}
+  cd ${pkgname}${_destname1}/.config/dwmblocks
   make
 }
 
 package() {
-  install -dm755 ${pkgdir}${_destname1}
-  cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+  install -dm755 ${pkgdir}${_destname1}/.config/dwmblocks/
+  install -dm755 ${pkgdir}${_destname2}
+  cp -r ${srcdir}/${pkgname}${_destname1}/.config/dwmblocks/* ${pkgdir}${_destname1}/.config/dwmblocks/
+  cp -r ${srcdir}/${pkgname}${_destname2}/* ${pkgdir}${_destname2}
 
-  cd ${pkgdir}${_destname1}
+  cd ${pkgdir}${_destname1}/.config/dwmblocks/
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
