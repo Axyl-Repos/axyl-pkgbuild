@@ -1,0 +1,23 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+pkgname=axyl-riverwm
+_destname1="/etc/skel/.config"
+pkgver=1.0
+pkgrel=1
+pkgdesc="River WM Configurations for Axyl OS"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-riverwm"
+license=('MIT')
+depends=(river foot bemenu-wayland)
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+install='post.install'
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${pkgname}${_destname1}/* ${pkgdir}${_destname1}
+
+        install -Dm 644 ${srcdir}/${pkgname}/river.desktop ${pkgdir}/usr/share/xsessions/river.desktop
+}
