@@ -18,6 +18,4 @@ install='post.install'
 package() {
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r ${srcdir}/${pkgname}${_destname1}/* ${pkgdir}${_destname1}
-
-        install -Dm 644 ${srcdir}/${pkgname}/river.desktop ${pkgdir}/usr/share/xsessions/river.desktop
 }
