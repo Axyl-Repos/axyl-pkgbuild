@@ -14,7 +14,7 @@ optdepends=()
 
 source=('nvim-config.tar.gz' 'nvim-plugins.tar.gz')
 
-sha256sums=('f4a971445032d8692733fb373f850b854f9fad7a3376a3eb30fa06d763403007'
+sha256sums=('ed4844e8206e9eeb00e1fd8c32218411e2154ae6fd6d801ff2583c76dfae8867'
             '71a25f3b2e489759bc1d7cf9cd09618d974416c3f53c5024439d2722dbc02a5a')
 
 package() {
