@@ -1,0 +1,35 @@
+# Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
+pkgname=axyl-iso-build
+_destname1="/etc/skel"
+pkgver=r142.54f1c5a
+pkgrel=1
+pkgdesc="Axyl ISO Source Code Build using Docker"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-iso"
+license=('MIT')
+depends=('docker')
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("${pkgname}::git+$url.git#branch=docker")
+sha256sums=('SKIP')
+install='post.install'
+
+package() {
+  install -dm755 ${pkgdir}${_destname1}/${pkgname}
+  cp -rf ${srcdir}/${pkgname}/archiso ${pkgdir}${_destname1}/${pkgname}
+
+  install -Dm644 ${srcdir}/${pkgname}/keybindings.md ${pkgdir}${_destname1}/${pkgname}/keybindings.md
+  install -Dm644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}${_destname1}/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/${pkgname}/README.md ${pkgdir}${_destname1}/${pkgname}/README.md
+
+  install -Dm644 ${srcdir}/${pkgname}/.dockerignore ${pkgdir}${_destname1}/${pkgname}/.dockerignore
+  install -Dm644 ${srcdir}/${pkgname}/Docker.md ${pkgdir}${_destname1}/${pkgname}/Docker.md
+  install -Dm644 ${srcdir}/${pkgname}/Dockerfile ${pkgdir}${_destname1}/${pkgname}/Dockerfile
+  install -Dm755 ${srcdir}/${pkgname}/startBuild.sh ${pkgdir}${_destname1}/${pkgname}/startBuild.sh
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
