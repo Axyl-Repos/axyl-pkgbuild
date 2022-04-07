@@ -43,9 +43,7 @@ jobs:
 
     - name: Build package database
       working-directory: ./3rdparty-x86_64
-      run: |
-          repo-add axyl-3party-repo.db.tar.gz *.pkg.tar.zst
-          rm -rf *.old
+      run: repo-add axyl-3party-repo.db.tar.gz *.pkg.tar.zst
 
     - name: List files
       run: |
