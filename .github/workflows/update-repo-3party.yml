@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  namcap:
+  build-repo-3party:
 
     runs-on: ubuntu-latest
     container:
