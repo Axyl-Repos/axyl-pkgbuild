@@ -1,0 +1,25 @@
+name: Update 3rd-party repo
+
+on:
+    schedule:
+    - cron: "0 0 * * 1"
+    workflow_dispatch:
+
+
+jobs:
+  namcap:
+
+    runs-on: ubuntu-latest
+    container:
+      image: angelofallaria/axyl-pkgbuild
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build packages
+      run: |
+        ./axyl-pkgbuild/3rdparty_pkgbuild/auto-build.sh
+
+    - name: List files
+      run: ls -R
