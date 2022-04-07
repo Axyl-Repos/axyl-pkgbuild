@@ -40,6 +40,13 @@ jobs:
           echo "Actual package count: $built_package_count"
           exit 1
         fi
+    
+    - name: Build package database
+      run: |
+          cd ./3rdparty-x86_64
+
+          repo-add axyl-3party-repo.db.tar.gz *.pkg.tar.zst
+          rm -rf *.old
 
     - name: List files
       run: |
