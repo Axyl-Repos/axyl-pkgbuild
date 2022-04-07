@@ -18,7 +18,7 @@ jobs:
     - name: Update system
       run: sudo pacman -Syu
 
-    - name: Make necessary files writeable
+    - name: Make __w directory writeable for Checkout action
       run: sudo chmod --recursive 777 /__w/
 
     - name: Checkout
