@@ -14,6 +14,9 @@ jobs:
       image: angelofallaria/axyl-pkgbuild
 
     steps:
+    - name: Update system
+      run: sudo pacman -Syu
+
     - name: Checkout
       uses: actions/checkout@v2
 
