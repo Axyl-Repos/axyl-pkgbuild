@@ -1,8 +1,40 @@
+_user=`echo ${SUDO_USER:-$(whoami)}`
+_gid=`echo ${SUDO_GID}`
+_group=`cat /etc/group | grep ${_gid} | cut -d: -f1 | head -1`
+_dir="/home/${_user}/axyl-iso-build"
+ 
 post_install() {
     systemctl enable docker.service
     systemctl start docker.service
+
+    if [[ ! -d "${_dir}" ]]; then
+      echo -e "\n[*] Copying 'axyl-iso-build' files into ${_dir}..."
+      mkdir -p ${_dir}
+      cp -rf /etc/skel/axyl-iso-build/* ${_dir}/
+      chown -R ${_user}:${_group} ${_dir}/
+      if [[ -d "${_dir}" ]]; then
+        echo -e "[*] Done!\n"
+      else
+        echo -e "[*] Failed!\n"
+      fi
+    else
+      echo -e "\n[*] 'axyl-iso-build' already exists in your system.\nPlease copy the directory manually from '/etc/skel/axyl-iso-build'.\n"
+    fi
 }
 
 post_upgrade() {
-    post_install
+  echo -e "\n[*] Copying updated files into ${_dir}..."
+  cp -rf /etc/skel/axyl-iso-build/* ${_dir}
+  chown -R ${_user}:${_group} ${_dir}/
+}
+
+post_remove() {
+  echo -e "\n[*] Removing ${_dir}..."
+  rm -rf ${_dir}
+
+  if [[ ! -d "${_dir}" ]]; then
+    echo -e "[*] Done!\n"
+  else
+    echo -e "[*] Failed!\n"
+  fi
 }
