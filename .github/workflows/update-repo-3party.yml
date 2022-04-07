@@ -26,7 +26,8 @@ jobs:
 
     - name: Build packages
       run: |
-        ./3rdparty_pkgbuild/auto-build.sh
+        cd 3rdparty_pkgbuild
+        ./auto-build.sh
 
     - name: List files
       run: |
