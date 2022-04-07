@@ -49,3 +49,23 @@ jobs:
       run: |
         pwd
         ls -R ../
+
+    - name: Setup git credentials
+      run: |
+           git config --global user.name "Angelo Fallaria"
+           git config --global user.email "ba.fallaria@gmail.com"
+
+    - name: Clone `axyl-3party-repo`
+      working-directory: ../
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      run: git clone https://angelofallars:$API_TOKEN_GITHUB@github.com/axyl-os/axyl-3party-repo.git
+
+    - name: Update repository and push
+      working-directory: ../axyl-3party-repo
+      run: |
+          git rm -r x86_64/
+          cp -r ../axyl-pkgbuild/3rdparty-x86_64/ ./x86_64/
+          git add x86_64/
+          git commit --message "feat: update 3rd-party repository"
+          git push --set-upstream origin master
