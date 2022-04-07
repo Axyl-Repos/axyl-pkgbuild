@@ -17,6 +17,9 @@ jobs:
     steps:
     - name: Update system
       run: sudo pacman -Syu
+    
+    - name: Make all files writeable
+      run: sudo chmod --recursive 777 /
 
     - name: Checkout
       uses: actions/checkout@v2
