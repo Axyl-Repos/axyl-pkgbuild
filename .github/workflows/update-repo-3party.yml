@@ -31,8 +31,8 @@ jobs:
 
     - name: Verify package count
       run: |
-        aur_package_count=$(cat ./3rdparty_pkgbuild/aur_packages | wc -l)
-        built_package_count=$(ls ../3rdparty-x86_64 | wc -l)
+        aur_package_count=$(cat ./3rdparty_pkgbuild/aurpackages | wc -l)
+        built_package_count=$(ls ./3rdparty-x86_64 | wc -l)
 
         if [ $aur_package_count -ne $built_package_count ]; then
           echo "ERROR: package counts do not match."
