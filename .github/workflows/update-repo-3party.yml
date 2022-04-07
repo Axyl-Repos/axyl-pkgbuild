@@ -24,9 +24,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Build packages
-      run: |
-        ./axyl-pkgbuild/3rdparty_pkgbuild/auto-build.sh
+        #    - name: Build packages
+        #      run: |
+        #        ./axyl-pkgbuild/3rdparty_pkgbuild/auto-build.sh
 
     - name: List files
-      run: ls -R
+      run: |
+        pwd
+        ls -R
