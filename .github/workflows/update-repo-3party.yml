@@ -25,8 +25,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Build packages
+      working-directory: ./3rdparty_pkgbuild
       run: |
-        cd 3rdparty_pkgbuild
         ./auto-build.sh
 
     - name: Verify package count
@@ -42,9 +42,8 @@ jobs:
         fi
 
     - name: Build package database
+      working-directory: ./3rdparty-x86_64
       run: |
-          cd ./3rdparty-x86_64
-
           repo-add axyl-3party-repo.db.tar.gz *.pkg.tar.zst
           rm -rf *.old
 
