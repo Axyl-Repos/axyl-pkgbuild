@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 pkgname=axyl-iso-build
 _destname1="/etc/skel"
-pkgver=r142.54f1c5a
+pkgver=r147.4f85762
 pkgrel=1
 pkgdesc="Axyl ISO Source Code Build using Docker"
 arch=('x86_64')
