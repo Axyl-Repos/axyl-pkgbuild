@@ -70,7 +70,7 @@ jobs:
       run: git clone https://angelofallars:$API_TOKEN_GITHUB@github.com/axyl-os/axyl-core-repo.git
 
     - name: Update repository and push
-      working-directory: ../axyl-repo
+      working-directory: ../axyl-core-repo
       run: |
           if [ "$GITHUB_REF_NAME" = "master" ]; then
               git rm -r x86_64/
