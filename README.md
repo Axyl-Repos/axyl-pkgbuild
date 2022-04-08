@@ -4,13 +4,21 @@ Axyl OS' Collection of package build files (PKGBUILD) for the core repo
 
 ## Workflow (WIP)
 
-The package update system for `axyl-3party-repo` and `axyl-repo` has been Dockerized.
+The package update system for the three repositories has been Dockerized and
+automated through GitHub Actions.
 
-Every week, an [action](./.github/workflows/update-repo-3party.yml) in GitHub Actions will build the 3rd-party packages,
-and commit and push to the package repo. The action may also be triggered manually.
+Periodically, [workflows](./.github/workflows/) in GitHub Actions will build
+each repo's packages, and commit and push to their respective package repos.
+The workflows may also be triggered manually.
 
 The actions utilize a specialized Docker image built from this repo's [Dockerfile](./Dockerfile).
 The actions require an API token named `API_TOKEN_GITHUB` for write access.
 
 In the 'Settings' page of this repo, you can add a new secret. `API_TOKEN_GITHUB` should
 be a personal API token you generate from [here](https://github.com/settings/tokens).
+
+
+## Schedule
+
+- **Every 3rd day of the month:** - 3rd Party Repo, Local Repo
+- **Every Monday:** - Core Repo
