@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Update system
-      run: sudo pacman -Syu
+      run: sudo pacman -Syu --noconfirm --needed
 
     - name: Make __w directory writeable for Checkout action
       run: sudo chmod --recursive 777 /__w/
