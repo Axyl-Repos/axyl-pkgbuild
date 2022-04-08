@@ -72,8 +72,11 @@ jobs:
     - name: Update repository and push
       working-directory: ../axyl-repo
       run: |
-          git rm -r x86_64/
-          cp -r ../axyl-pkgbuild/local-x86_64/ ./x86_64/
-          git add x86_64/
-          git commit --message "feat: update local repository"
-          git push --set-upstream origin master
+          if [ "$GITHUB_REF_NAME" = "master" ]; then
+              git rm -r x86_64/
+              cp -r ../axyl-pkgbuild/local-x86_64/ ./x86_64/
+              git add x86_64/
+              git commit --message "feat: update local repository"
+              git push --set-upstream origin master
+          fi
+          exit 0

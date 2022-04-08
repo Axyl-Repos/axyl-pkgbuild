@@ -66,8 +66,11 @@ jobs:
     - name: Update repository and push
       working-directory: ../axyl-3party-repo
       run: |
-          git rm -r x86_64/
-          cp -r ../axyl-pkgbuild/3rdparty-x86_64/ ./x86_64/
-          git add x86_64/
-          git commit --message "feat: update 3rd-party repository"
-          git push --set-upstream origin master
+          if [ "$GITHUB_REF_NAME" = "master" ]; then
+              git rm -r x86_64/
+              cp -r ../axyl-pkgbuild/3rdparty-x86_64/ ./x86_64/
+              git add x86_64/
+              git commit --message "feat: update 3rd-party repository"
+              git push --set-upstream origin master
+          fi
+          exit 0
