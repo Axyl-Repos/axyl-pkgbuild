@@ -31,7 +31,7 @@ jobs:
         expected_package_count=$(ls -d ./local_pkgbuild/*/ | wc -l)
         built_package_count=$(ls ./local-x86_64 | wc -l)
 
-        if [ $aur_package_count -ne $built_package_count ]; then
+        if [ $expected_package_count -ne $built_package_count ]; then
           echo "ERROR: package counts do not match."
           echo "Expected package count: $expected_package_count"
           echo "Actual package count: $built_package_count"
