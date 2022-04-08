@@ -3,6 +3,8 @@ name: Update local repo
 on:
     workflow_dispatch:
     push:
+      branches-ignore:
+        - 'master'
 
 
 jobs:
@@ -17,7 +19,7 @@ jobs:
       run: |
         sudo su -c 'echo >> /etc/pacman.conf'
         sudo su -c 'echo "[axyl-3party-repo]" >> /etc/pacman.conf'
-        sudo su -c 'echo "SigLevel = Optional TrustedOnly' >> /etc/pacman.conf'
+        sudo su -c 'echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf'
         sudo su -c 'echo "Server = https://axyl-os.github.io/\$repo/\$arch" >> /etc/pacman.conf'
         cat /etc/pacman.conf
 
