@@ -1,5 +1,7 @@
 # axyl-pkgbuild
 
+[![Update 3rd-party and local repo](https://github.com/axyl-os/axyl-pkgbuild/actions/workflows/update-repo-3party-local.yml/badge.svg?branch=master)](https://github.com/axyl-os/axyl-pkgbuild/actions/workflows/update-repo-3party-local.yml) [![Update core repo](https://github.com/axyl-os/axyl-pkgbuild/actions/workflows/update-repo-core.yml/badge.svg?branch=master)](https://github.com/axyl-os/axyl-pkgbuild/actions/workflows/update-repo-core.yml)
+
 Axyl OS' Collection of package build files (PKGBUILD) for the core repo
 
 ## Workflow (WIP)
