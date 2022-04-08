@@ -82,6 +82,9 @@ jobs:
     needs: build-repo-3party
 
     steps:
+    - name: Wait for GitHub Pages to deploy the 3rd-party repo
+      run: sleep 180
+
     - name: Add 3rd-party repo to package repo list
       run: |
         sudo su -c 'echo >> /etc/pacman.conf'
@@ -98,9 +101,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Wait for GitHub Pages to deploy the 3rd-party repo
-      run: sleep 180
 
     - name: Build packages
       working-directory: ./local_pkgbuild
