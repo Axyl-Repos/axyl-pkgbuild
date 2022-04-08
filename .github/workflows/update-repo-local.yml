@@ -12,8 +12,14 @@ jobs:
       image: angelofallaria/axyl-pkgbuild
 
     steps:
+    - name: Add 3rd-party repo to package repo list
+      run: |
+        sudo su -c "echo '[axyl-3party-repo]' >> /etc/pacman.conf"
+        sudo su -c "echo 'SigLevel = Optional TrustedOnly' >> /etc/pacman.conf"
+        sudo su -c "echo 'Server = https://axyl-os.github.io/$repo/$arch' >> /etc/pacman.conf"
+
     - name: Update system
-      run: sudo pacman -Syu --noconfirm --needed
+      run: sudo pacman -Syyu --noconfirm --needed
 
     - name: Make __w directory writeable for Checkout action
       run: sudo chmod --recursive 777 /__w/
