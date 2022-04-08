@@ -2,6 +2,7 @@ name: Update local repo
 
 on:
     workflow_dispatch:
+    push:
 
 
 jobs:
