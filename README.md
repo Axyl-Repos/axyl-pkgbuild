@@ -21,4 +21,4 @@ be a personal API token you generate from [here](https://github.com/settings/tok
 ## Schedule
 
 - **Every 3rd day of the month:** - 3rd Party Repo, Local Repo
-- **Every Monday:** - Core Repo
+- **Every 1st of the Month:** - Core Repo
