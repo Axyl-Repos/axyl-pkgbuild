@@ -15,9 +15,11 @@ jobs:
     steps:
     - name: Add 3rd-party repo to package repo list
       run: |
-        sudo su -c "echo '[axyl-3party-repo]' >> /etc/pacman.conf"
-        sudo su -c "echo 'SigLevel = Optional TrustedOnly' >> /etc/pacman.conf"
-        sudo su -c "echo 'Server = https://axyl-os.github.io/$repo/$arch' >> /etc/pacman.conf"
+        sudo su
+        echo '' >> /etc/pacman.conf
+        echo '[axyl-3party-repo]' >> /etc/pacman.conf
+        echo 'SigLevel = Optional TrustedOnly' >> /etc/pacman.conf
+        echo 'Server = https://axyl-os.github.io/$repo/$arch' >> /etc/pacman.conf
         cat /etc/pacman.conf
 
     - name: Update system
