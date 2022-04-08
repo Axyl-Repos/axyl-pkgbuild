@@ -2,7 +2,7 @@ name: Update 3rd-party repo
 
 on:
     schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 9 */3 * *"
     workflow_dispatch:
     push:
       branches-ignore:
