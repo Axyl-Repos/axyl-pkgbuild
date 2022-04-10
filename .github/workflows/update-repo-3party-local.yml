@@ -26,10 +26,23 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Clone package repositories
+      working-directory: ./3rdparty_pkgbuild
+      run: |
+        cat ./aurpackages | xargs -P $(nproc) -I {} git clone https://aur.archlinux.org/{}.git ./3rdparty/{}
+        cat ./aurpackages | xargs -P $(nproc) -I {} rm -rf ./3rdparty/{}/.git
+
     - name: Build packages
       working-directory: ./3rdparty_pkgbuild
       run: |
-        ./auto-build.sh
+        mkdir -p ../3rdparty-x86_64
+
+        for package in $(cat ./aurpackages); do
+            cd ./3rdparty/"${package}"
+            makepkg -sc --noconfirm --skippgpcheck
+            mv *.pkg.tar.zst ../../../3rdparty-x86_64
+            cd ../../
+        done
 
     - name: Verify package count
       run: |
