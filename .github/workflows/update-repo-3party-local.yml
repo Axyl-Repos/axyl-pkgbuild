@@ -118,7 +118,15 @@ jobs:
     - name: Build packages
       working-directory: ./local_pkgbuild
       run: |
-        ./build.sh
+        mkdir -p ../local-x86_64
+
+        for package in ./*/; do
+            cd ./"${package}"
+            makepkg -sc --noconfirm
+            mv *.pkg.tar.zst ../../local-x86_64
+            cd ../
+        done
+
 
     - name: Verify package count
       run: |
