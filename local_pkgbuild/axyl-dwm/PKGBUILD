@@ -2,7 +2,7 @@
 
 pkgname=axyl-dwm
 _destname1="/etc/skel"
-pkgver=6.2
+pkgver=r59.75e3004
 pkgrel=1
 pkgdesc="dwm configuration for Axyl OS"
 arch=('x86_64')
@@ -30,4 +30,9 @@ package() {
   cd "$pkgname"${_destname1}/.config/dwm/
   install -Dm755 "./dwm" ${pkgdir}/usr/bin/dwm
   install -Dm644 "./dwm.desktop" ${pkgdir}/usr/share/xsessions/dwm.desktop
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

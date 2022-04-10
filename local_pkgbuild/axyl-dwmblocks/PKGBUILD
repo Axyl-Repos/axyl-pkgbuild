@@ -3,7 +3,7 @@
 pkgname=axyl-dwmblocks
 _destname1="/etc/skel"
 _destname2="/usr/local/bin"
-pkgver=1.0
+pkgver=r16.48d551b
 pkgrel=1
 pkgdesc="dwmblocks configuration for axyl-dwm"
 arch=('x86_64')
@@ -28,4 +28,9 @@ package() {
 
   cd ${pkgdir}${_destname1}/.config/dwmblocks/
   make PREFIX=/usr DESTDIR="${pkgdir}" install
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

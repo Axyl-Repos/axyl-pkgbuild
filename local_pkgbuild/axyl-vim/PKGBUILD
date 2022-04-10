@@ -53,3 +53,8 @@ package() {
 	install -Dm 644 ".vimrc" ${pkgdir}/etc/skel
 	rm ${pkgdir}/etc/skel/.vim_runtime/.vimrc
 }
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}

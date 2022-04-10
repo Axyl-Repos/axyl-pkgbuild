@@ -2,7 +2,7 @@
 pkgname=axyl-leftwm
 _pkgname=axyl-leftwm
 _destname1="/etc/skel/.config/"
-pkgver=1.0
+pkgver=r23.231fb9a
 pkgrel=1
 pkgdesc="LeftWM Configurations & Themes for Axyl OS"
 arch=('x86_64')
@@ -19,4 +19,9 @@ install='post.install'
 package() {
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

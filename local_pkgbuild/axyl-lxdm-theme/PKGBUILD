@@ -3,7 +3,7 @@
 pkgname=axyl-lxdm-theme
 _pkgname=axyl-lxdm-theme
 _destname1=/usr/share/
-pkgver=1.0
+pkgver=r5.f66b116
 pkgrel=1
 pkgdesc="LXDM theme for Axyl OS"
 arch=('x86_64')
@@ -20,4 +20,9 @@ package() {
     install -dm755 ${pkgdir}${_destname1}
     cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
     rm -rf ${pkgdir}${_destname1}/"share"
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

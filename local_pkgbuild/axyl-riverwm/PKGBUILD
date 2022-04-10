@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 pkgname=axyl-riverwm
 _destname1="/etc/skel/.config"
-pkgver=1.0
+pkgver=r5.2bae1c3
 pkgrel=1
 pkgdesc="River WM Configurations for Axyl OS"
 arch=('x86_64')
@@ -18,4 +18,9 @@ install='post.install'
 package() {
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r ${srcdir}/${pkgname}${_destname1}/* ${pkgdir}${_destname1}
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

@@ -22,3 +22,8 @@ package() {
 	install -dm755 ${pkgdir}${_destname1}${_pkgname}
 	cp -rf ${_pkgname}/* ${pkgdir}${_destname1}${_pkgname}
 }
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}

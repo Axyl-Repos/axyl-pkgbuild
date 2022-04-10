@@ -2,7 +2,7 @@
 pkgname=axyl-wallpapers
 _pkgname=axyl-wallpapers
 _destname1="/usr/share/backgrounds/${_pkgname}"
-pkgver=1.0
+pkgver=r4.3d5bdee
 pkgrel=1
 pkgdesc="Axyl Wallpapers & Artworks"
 arch=('x86_64')
@@ -18,4 +18,9 @@ install="post.install"
 package() {
 	install -dm755 ${pkgdir}${_destname1}
 	cp -r ${srcdir}/${_pkgname}/artworks ${pkgdir}${_destname1}
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

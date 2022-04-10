@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 
 pkgname=axyl-dmenu
-pkgver=5.0
+pkgver=r6.a7ce809
 pkgrel=1
 pkgdesc="Command/Application Launcher for Axyl OS"
 arch=('x86_64')
@@ -25,4 +25,9 @@ package() {
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

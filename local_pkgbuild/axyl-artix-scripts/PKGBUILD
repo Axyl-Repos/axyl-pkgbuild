@@ -3,7 +3,7 @@
 pkgname=axyl-artix-scripts
 _pkgname=axyl-artix-scripts
 _destname1="/usr/local/bin/"
-pkgver=1.0
+pkgver=r4.9195b0e
 pkgrel=1
 pkgdesc="System Scipts for Axyl OS Artix edition"
 arch=('any')
@@ -20,4 +20,9 @@ package() {
     install -dm755 ${pkgdir}${_destname1}
     cp -lr ${srcdir}/${_pkgname}${_destname1}.* ${pkgdir}${_destname1}
     rm -rf ${pkgdir}${_destname1}/"bin"
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
