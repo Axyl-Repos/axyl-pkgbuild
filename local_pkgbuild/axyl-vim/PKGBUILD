@@ -2,7 +2,7 @@
 # Developer : Amir Salihefendic <@amix3k>
 
 pkgname=axyl-vim
-pkgver=1.0
+pkgver=r441.5108ca4e
 pkgrel=1
 pkgdesc="The ultimate Vim configuration (vimrc) "
 arch=('any')
@@ -55,6 +55,6 @@ package() {
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd ./vimrc
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

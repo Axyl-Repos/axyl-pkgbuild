@@ -4,7 +4,7 @@
 pkgname=axyl-conkeww
 _pkgname=conkeww
 _destname1="/etc/skel/.config/"
-pkgver=1.0
+pkgver=r45.2f925cd
 pkgrel=1
 pkgdesc="A UI framework like Conky built on eww"
 arch=('any')
@@ -24,6 +24,6 @@ package() {
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
