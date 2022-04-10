@@ -37,7 +37,14 @@ jobs:
     - name: Build packages
       working-directory: ./core_pkgbuild
       run: |
-        ./build.sh
+        mkdir -p ../core-x86_64
+
+        for package in ./*/; do
+            cd ./"${package}"
+            makepkg -sc --noconfirm
+            mv *.pkg.tar.zst ../../core-x86_64
+            cd ../
+        done
 
     - name: Verify package count
       run: |
