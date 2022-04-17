@@ -3,7 +3,7 @@
 pkgname=axyl-artix-scripts
 _pkgname=axyl-artix-scripts
 _destname1="/usr/local/bin/"
-pkgver=r4.9195b0e
+pkgver=r6.6732813
 pkgrel=1
 pkgdesc="System Scipts for Axyl OS Artix edition"
 arch=('any')
