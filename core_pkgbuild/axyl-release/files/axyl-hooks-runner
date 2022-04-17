@@ -22,7 +22,7 @@ fix_os_release() {
         -e 's|^ID=.*$|ID=axyl|' \
         -e 's|^ID_LIKE=.*$|ID_LIKE=arch|' \
         -e 's|^BUILD_ID=.*$|BUILD_ID=rolling|' \
-        -e 's|^HOME_URL=.*$|HOME_URL=\"https://axyl-os.github.io\"|' \
+        -e 's|^HOME_URL=.*$|HOME_URL=\"https://axylos.org\"|' \
         -e 's|^BUG_REPORT_URL=.*$|BUG_REPORT_URL=\"https://github.com/axyl-os/axyl-iso/issues\"|' \
         -e 's|^LOGO=.*$|LOGO=axyl|'
 
