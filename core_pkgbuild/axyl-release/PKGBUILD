@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Matthews <axyl.os.linux@gmail.com>
 
 pkgname=axyl-release
-pkgver=v21.10
+pkgver=1.0
 pkgrel=1
 pkgdesc="Pacman hooks for Axyl to fix various system files."
 arch=('any')
