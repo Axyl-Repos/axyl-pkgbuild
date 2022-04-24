@@ -1,0 +1,8 @@
+post_install() {
+    echo -e "\n** Please copy rofi/ folder from /etc/skel/.config/rofi/ to ~/.config/rofi/ **\n"
+    echo -e "\n** Execute this command: cp -r /etc/skel/.config/rofi/ ~/.config/rofi/ **\n"
+}
+
+post_upgrade() {
+    post_install
+}
