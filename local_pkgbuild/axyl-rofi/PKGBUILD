@@ -1,0 +1,27 @@
+# Maintainer: Angelo Fallaria <ba.fallaria@gmail.com>
+pkgname=axyl-rofi
+_pkgname=axyl-rofi
+_destname1="/etc/skel/.config/"
+pkgver=r4.c867ee5
+pkgrel=1
+pkgdesc="Rofi configuration for Axyl"
+arch=('x86_64')
+url="https://github.com/axyl-os/axyl-rofi"
+license=('MIT')
+depends=(rofi-lbonn-wayland)
+makedepends=('git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("git+$url.git")
+sha256sums=('SKIP')
+install='post.install'
+
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${_pkgname}${_destname1}* ${pkgdir}${_destname1}
+}
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
