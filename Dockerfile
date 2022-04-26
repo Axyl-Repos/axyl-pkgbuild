@@ -3,7 +3,7 @@ FROM archlinux:latest
 # Create the home directory for the new app user.
 RUN mkdir -p /home/app
 
-RUN pacman -Syu --needed --noconfirm git base-devel sudo
+RUN pacman -Syu --needed --noconfirm git base-devel sudo cmake
 
 # Create an app user so our program doesn't run as root.
 RUN useradd --home-dir /home/app --shell /sbin/nologin --comment "Docker image user" app
