@@ -26,6 +26,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Disable safe directory check for the repo
+      run: git config --global --add safe.directory '/__w/'
+
     - name: Clone package repositories
       working-directory: ./3rdparty_pkgbuild
       run: |
