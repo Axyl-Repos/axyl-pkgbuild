@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Update system
-      run: sudo pacman -Syu --noconfirm --needed base-devel
+      run: sudo pacman -Syu --noconfirm --needed base-devel go-md2man doxygen cppcheck cmake
 
     - name: Make __w directory writeable for Checkout action
       run: sudo chmod --recursive 777 /__w/
