@@ -26,7 +26,7 @@ package() {
   install -Dm644 ${srcdir}/${pkgname}/.dockerignore ${pkgdir}${_destname1}/${pkgname}/.dockerignore
   install -Dm644 ${srcdir}/${pkgname}/Docker.md ${pkgdir}${_destname1}/${pkgname}/Docker.md
   install -Dm644 ${srcdir}/${pkgname}/Dockerfile ${pkgdir}${_destname1}/${pkgname}/Dockerfile
-  install -Dm755 ${srcdir}/${pkgname}/startBuild.sh ${pkgdir}${_destname1}/${pkgname}/startBuild.sh
+  install -Dm755 ${srcdir}/${pkgname}/docker-build.sh ${pkgdir}${_destname1}/${pkgname}/docker-build.sh
 }
 
 pkgver() {
