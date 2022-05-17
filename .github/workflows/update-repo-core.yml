@@ -35,7 +35,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Make repository safe in Git config
-      uses: |
+      run: |
         git config --global --add safe.directory /__w/axyl-pkgbuild/axyl-pkgbuild
         sudo git config --global --add safe.directory /__w/axyl-pkgbuild/axyl-pkgbuild
 
