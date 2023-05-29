@@ -19,7 +19,8 @@ jobs:
     steps:
     - name: Update system
       run: |
-        sudo pacman -Syu --noconfirm --needed archlinux-keyring base-devel go-md2man doxygen cppcheck
+        sudo pacman -S --noconfirm archlinux-keyring
+        sudo pacman -Syu --noconfirm --needed base-devel go-md2man doxygen cppcheck
 
     - name: Make __w directory writeable for Checkout action
       run: sudo chmod --recursive 777 /__w/
