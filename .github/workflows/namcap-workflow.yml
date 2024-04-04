@@ -22,8 +22,7 @@ jobs:
         git clone https://github.com/axyl-os/namcap.git
 
         pip install --upgrade pip
-        pip install -r namcap/requirements.txt
-
+        pacman -Syu python-pyelftools pyalpm --noconfirm --needed
     - name: Install namcap
       working-directory: namcap
       run: python setup.py install
