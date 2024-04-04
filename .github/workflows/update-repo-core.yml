@@ -28,10 +28,10 @@ jobs:
     #    cat /etc/pacman.conf
 
     - name: Update system
-      run: sudo pacman -Syyu --noconfirm --needed
+      run: pacman -Syyu --noconfirm --needed
 
     - name: Make __w directory writeable for Checkout action
-      run: sudo chmod --recursive 777 /__w/
+      run: chmod --recursive 777 /__w/
 
     - name: Checkout
       uses: actions/checkout@v2
