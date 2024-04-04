@@ -13,8 +13,8 @@ jobs:
   build-repo-core:
 
     runs-on: ubuntu-latest
-    container:
-      image: angelofallaria/axyl-pkgbuild
+    container: archlinux/archlinux:latest
+      #image: angelofallaria/axyl-pkgbuild
 
     steps:
     - name: Add 3rd-party repo to package repo list
