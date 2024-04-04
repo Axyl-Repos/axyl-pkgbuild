@@ -15,13 +15,13 @@ jobs:
 
     - name: Install packages
       run: |
-        pacman -Syu python python-pip git base-devel --noconfirm --needed
+        pacman -Syu python python-pip git base-devel python-pyelftools pyalpm python-setuptools-git python-click-plugins --noconfirm --needed
 
     - name: Prepare namcap
       run: |
         git clone https://github.com/axyl-os/namcap.git
         pip -h install -r requirements.txt --break-system-packages
-        #pacman -Syu python-pyelftools pyalpm python-setuptools-git python-click-plugins --noconfirm --needed
+        
     - name: Install namcap
       working-directory: namcap
       run: python setup.py install
