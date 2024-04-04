@@ -21,7 +21,7 @@ jobs:
       run: |
         git clone https://github.com/axyl-os/namcap.git
 
-        pacman -Syu python-pyelftools pyalpm --noconfirm --needed
+        pacman -Syu python-pyelftools pyalpm python-setuptools-git python-click-plugins --noconfirm --needed
     - name: Install namcap
       working-directory: namcap
       run: python setup.py install
