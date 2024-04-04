@@ -15,86 +15,33 @@ jobs:
     runs-on: ubuntu-latest
     container: 
        image: rubixcube199/axylos:latest
-       options: --privileged 
-       #image: angelofallaria/axyl-pkgbuild
 
     steps:
-    #- name: Add 3rd-party repo to package repo list
-    #  run: |
-    #    'echo >> /etc/pacman.conf'
-    #    'echo "[axyl-3party-repo]" >> /etc/pacman.conf'
-    #    'echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf'
-    #    'echo "Server = https://axyl-os.github.io/\$repo/\$arch" >> /etc/pacman.conf'
-    #    cat /etc/pacman.conf
-
-    - name: Update system
-      run: pacman -Syyu --noconfirm --needed
-
-    - name: Make __w directory writeable for Checkout action
-      run: chmod --recursive 777 /__w/
+    
+    - name: Configure Buid Env
+      run: |
+        cd
+        git clone https://github.com/axyl-os/axyl-pkgbuild
 
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Make repository safe in Git config
-      run: |
-        git config --global --add safe.directory /__w/axyl-pkgbuild/axyl-pkgbuild
-        git config --global --add safe.directory /__w/axyl-pkgbuild/axyl-pkgbuild
-
     - name: Build packages
-      working-directory: ./core_pkgbuild
       run: |
-        useradd mkpkg
-        su mkpkg # this is destined to fail
-        mkdir -p ../core-x86_64
-
-        for package in ./*/; do
-            cd ./"${package}"
-            makepkg -sc --noconfirm
-            mv *.pkg.tar.zst ../../core-x86_64
-            cd ../
-        done
-
-    - name: Verify package count
-      run: |
-        expected_package_count=$(ls -d ./core_pkgbuild/*/ | wc -l)
-        built_package_count=$(ls ./core-x86_64 | wc -l)
-
-        if [ $expected_package_count -ne $built_package_count ]; then
-          echo "ERROR: package counts do not match."
-          echo "Expected package count: $expected_package_count"
-          echo "Actual package count: $built_package_count"
-          exit 1
-        fi
-
-    - name: Build package database
-      working-directory: ./core-x86_64
-      run: repo-add axyl-core-repo.db.tar.gz *.pkg.tar.zst
-
-    - name: List files
-      run: |
-        pwd
-        ls -R ../
+       cd
+       cd axyl-pkgbuild/core_pkgbuild
+       ./build.sh
 
     - name: Setup git credentials
       run: |
-           git config --global user.name "Angelo Fallaria"
-           git config --global user.email "ba.fallaria@gmail.com"
+           git config --global user.name "rubixcube199"
+           git config --global user.email "profwampus@duck.com"
 
-    - name: Clone `axyl-core-repo`
+    - name: Update Repos
       working-directory: ../
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      run: git clone https://angelofallars:$API_TOKEN_GITHUB@github.com/axyl-os/axyl-core-repo.git
-
-    - name: Update repository and push
-      working-directory: ../axyl-core-repo
       run: |
-          if [ "$GITHUB_REF_NAME" = "master" ]; then
-              git rm -r x86_64/
-              cp -r ../axyl-pkgbuild/core-x86_64/ ./x86_64/
-              git add x86_64/
-              git commit --message "feat: update core repository"
-              git push --set-upstream origin master
-          fi
-          exit 0
+       cd
+       cd axyl-pkgbuild
+       ./upd-core.sh
