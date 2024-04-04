@@ -7,7 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-      image: archlinux
+      image: archlinux/archlinux:latest
 
     steps:
     - name: Checkout
@@ -19,7 +19,7 @@ jobs:
 
     - name: Prepare namcap
       run: |
-        git clone https://github.com/angelofallars/namcap.git
+        git clone https://github.com/axyl-os/namcap.git
 
         pip install --upgrade pip
         pip install -r namcap/requirements.txt
