@@ -44,6 +44,8 @@ jobs:
     - name: Build packages
       working-directory: ./core_pkgbuild
       run: |
+        useradd mkpkg
+        su mkpkg # this is destined to fail
         mkdir -p ../core-x86_64
 
         for package in ./*/; do
