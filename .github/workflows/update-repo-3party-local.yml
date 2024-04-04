@@ -14,16 +14,17 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-      image: angelofallaria/axyl-pkgbuild
+      image: rubixcube199/axylos:latest
+      options: --privileged
 
     steps:
     - name: Update system
       run: |
-        sudo pacman -S --noconfirm archlinux-keyring
-        sudo pacman -Syu --noconfirm --needed base-devel go-md2man doxygen cppcheck
+        pacman -S --noconfirm archlinux-keyring
+        pacman -Syu --noconfirm --needed base-devel go-md2man doxygen cppcheck
 
     - name: Make __w directory writeable for Checkout action
-      run: sudo chmod --recursive 777 /__w/
+      run: chmod --recursive 777 /__w/
 
     - name: Checkout
       uses: actions/checkout@v2
@@ -72,8 +73,8 @@ jobs:
 
     - name: Setup git credentials
       run: |
-           git config --global user.name "Angelo Fallaria"
-           git config --global user.email "ba.fallaria@gmail.com"
+           git config --global user.name "rubixcube199"
+           git config --global user.email "profwampus@duck.com"
 
     - name: Clone `axyl-3party-repo`
       working-directory: ../
@@ -96,26 +97,27 @@ jobs:
   build-repo-local:
     runs-on: ubuntu-latest
     container:
-      image: angelofallaria/axyl-pkgbuild
+      image: rubixcube199/axylos:latest
+      options: --privileged
     needs: build-repo-3party
 
     steps:
     - name: Wait for GitHub Pages to deploy the 3rd-party repo
       run: sleep 180
 
-    - name: Add 3rd-party repo to package repo list
-      run: |
-        sudo su -c 'echo >> /etc/pacman.conf'
-        sudo su -c 'echo "[axyl-3party-repo]" >> /etc/pacman.conf'
-        sudo su -c 'echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf'
-        sudo su -c 'echo "Server = https://axyl-os.github.io/\$repo/\$arch" >> /etc/pacman.conf'
-        cat /etc/pacman.conf
+#    - name: Add 3rd-party repo to package repo list
+#      run: |
+#        sudo su -c 'echo >> /etc/pacman.conf'
+#        sudo su -c 'echo "[axyl-3party-repo]" >> /etc/pacman.conf'
+#        sudo su -c 'echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf'
+#        sudo su -c 'echo "Server = https://axyl-os.github.io/\$repo/\$arch" >> /etc/pacman.conf'
+#        cat /etc/pacman.conf
 
     - name: Update system
-      run: sudo pacman -Syyu --noconfirm --needed
+      run: pacman -Syyu --noconfirm --needed
 
     - name: Make __w directory writeable for Checkout action
-      run: sudo chmod --recursive 777 /__w/
+      run: chmod --recursive 777 /__w/
 
     - name: Checkout
       uses: actions/checkout@v2
@@ -156,8 +158,8 @@ jobs:
 
     - name: Setup git credentials
       run: |
-           git config --global user.name "Angelo Fallaria"
-           git config --global user.email "ba.fallaria@gmail.com"
+           git config --global user.name "rubixcube199"
+           git config --global user.email "profwampus@duck.com"
 
     - name: Clone `axyl-repo`
       working-directory: ../
