@@ -14,18 +14,18 @@ jobs:
 
     runs-on: ubuntu-latest
     container: 
-       image: archlinux/archlinux:latest
+       image: rubixcube199/axylos:latest
        options: --privileged 
        #image: angelofallaria/axyl-pkgbuild
 
     steps:
-    - name: Add 3rd-party repo to package repo list
-      run: |
-        'echo >> /etc/pacman.conf'
-        'echo "[axyl-3party-repo]" >> /etc/pacman.conf'
-        'echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf'
-        'echo "Server = https://axyl-os.github.io/\$repo/\$arch" >> /etc/pacman.conf'
-        cat /etc/pacman.conf
+    #- name: Add 3rd-party repo to package repo list
+    #  run: |
+    #    'echo >> /etc/pacman.conf'
+    #    'echo "[axyl-3party-repo]" >> /etc/pacman.conf'
+    #    'echo "SigLevel = Optional TrustedOnly" >> /etc/pacman.conf'
+    #    'echo "Server = https://axyl-os.github.io/\$repo/\$arch" >> /etc/pacman.conf'
+    #    cat /etc/pacman.conf
 
     - name: Update system
       run: sudo pacman -Syyu --noconfirm --needed
