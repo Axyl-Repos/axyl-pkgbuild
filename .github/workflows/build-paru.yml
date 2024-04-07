@@ -37,20 +37,20 @@ jobs:
 
 
      - name: Create a GitHub Release
-        env:
+       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+       run: |
           cd $GITHUB_WORKSPACE
           git clone https://github.com/axyl-os/axyl-pkgbuild
           cd axyl-pkgbuild
             gh release create paru-"$(date +%Y.%m.%d)" --generate-notes --prerelease
 
-      - name: Upload to GitHub Release
-         env:
+     - name: Upload to GitHub Release
+       env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         run: |
+       run: |
            cd $GITHUB_WORKSPACE
            cd axyl-pkgbuild
            for f in $(find /github/home/paru -name '*.iso*'); do
             gh release upload paru-"$(date +%Y.%m.%d)" $f --clobber
-          done
+           done
