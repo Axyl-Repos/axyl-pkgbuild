@@ -1,0 +1,56 @@
+name: Build Paru
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+     - cron:  '0 0 */1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux/archlinux:latest
+
+    steps:
+     - name: install deps
+       run: sudo pacman -Syu git github-cli rsync wget openssh sshpass tree fakeroot make rust
+
+     - name: Clone PARU
+       run: |
+         cd $GITHUB_WORKSPACE
+         git clone https://aur.archlinux.org/paru.git
+
+     - name: build PARU
+       run: |
+         cd paru
+         makepkg
+
+     - name: Upload a Build Artifact
+       uses: actions/upload-artifact@v4.3.1
+       with:
+            name: paru
+            path: /github/home/paru
+            if-no-files-found: warn
+            retention-days: 60
+            compression-level: 0
+            overwrite: false
+
+
+     - name: Create a GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd $GITHUB_WORKSPACE
+          git clone https://github.com/axyl-os/axyl-pkgbuild
+          cd axyl-pkgbuild
+            gh release create paru-"$(date +%Y.%m.%d)" --generate-notes --prerelease
+
+      - name: Upload to GitHub Release
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         run: |
+           cd $GITHUB_WORKSPACE
+           cd axyl-pkgbuild
+           for f in $(find /github/home/paru -name '*.iso*'); do
+            gh release upload paru-"$(date +%Y.%m.%d)" $f --clobber
+          done
