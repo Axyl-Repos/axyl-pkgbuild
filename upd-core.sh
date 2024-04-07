@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# moving packages to core repository
-mv ./core-x86_64/* ../axyl-core-repo/x86_64/
+# moving packages to core repository from local machine mlc repo
+mv ../pkgs/out/* ../axyl-core-repo/x86_64/
 
 # update repository, remove .old & push changes
 (cd ../axyl-core-repo/x86_64/;
